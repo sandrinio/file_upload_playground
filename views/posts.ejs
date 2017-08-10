@@ -1,0 +1,39 @@
+<% include ./partials/header.ejs %>
+
+
+<div class="well">
+    <h1 class="text-center">Post Paging and Search practice</h1>
+</div>
+<div class="container">
+    <div>
+         <div class="well">
+             <table class="table table-condensed">
+                 <tr>
+                     <th>Title</th>
+                     <th>Author</th>
+                     <th>Date</th>
+                     <th>Link</th>
+                 </tr>
+                 <% data.forEach(function (docs) { %>
+                     <tr>
+                         <td class="warning"><%= docs.title %></td>
+                         <td class="warning"><%= docs.author.firstname + " " + docs.author.lastname %></td>
+                         <td class="warning"><%= docs.date.toLocaleDateString('en-GB') %></td>
+                         <td class="warning"><a href="/posts/<%= docs.id %>">More</a></td>
+                     </tr>
+                 <% }) %>
+             </table>
+             <% var counter = 0 %>
+             <%  %>
+             <a href="/posts">Page 1</a>
+             <a href="/posts?page=2">Page 2</a>
+             <a href="/posts?page=3">Page 3</a>
+             <a href="/posts?page=4">Page 4</a>
+             <a href="/posts?page=5">Page 5</a>
+             <a href="/posts?page=6">Page 6</a>
+         </div>
+    </div>
+</div>
+
+
+<% include ./partials/footer.ejs %>

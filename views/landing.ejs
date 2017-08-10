@@ -1,0 +1,39 @@
+<% include ./partials/header.ejs%>
+
+<div class="well">
+    <h1 class="text-center">File Upload Practice</h1>
+</div>
+
+
+        <div class="container">
+            <div class="well">
+                <form action="/basic_upload" style="margin-left: 0; display: inline-block;" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputFile">Basic file Upload with Multer</label>
+                        <input type="file" name="basicFile" id="exampleInputFile">
+                    </div>
+                        <button class="btn btn-primary">Basic file Upload</button>
+                </form>
+                <div>
+            <% if(photo !== "") { %>
+                <img style="width: 200px; margin-top: 10px; display: inline-block";
+                     src="/uploads/basic_uploads/<%= photo.filename %>" alt="<%= photo.size %>" class="img-thumbnail">
+                <a style="display: block;" href="/uploads/basic_uploads/<%= photo.filename %>">Download link</a>
+                <% } %>
+                </div>
+            </div>
+            <div class="well">
+                <form id="uploadForm" action="/ajax_upload" method="POST" enctype="multipart/form-data" onsubmit="submitFormAjax();return false;">
+                    <div class="form-group">
+                        <label for="exampleInputFile">Ajax file Upload with Multer</label>
+                        <input type="file" name="ajaxFile" id="exampleInputFile">
+                    </div>
+                        <input class="btn btn-primary" type="submit" value="Basic file Upload">
+                </form>
+                <div id="targetLayer"></div>
+
+            </div>
+        </div>
+
+
+<% include ./partials/footer.ejs%>

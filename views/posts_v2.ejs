@@ -1,0 +1,62 @@
+<% include ./partials/header.ejs %>
+
+
+<div class="well">
+    <h1 class="text-center">Post Paging and Search practice</h1>
+</div>
+<div class="container">
+    <div>
+         <div class="well">
+             <table class="table table-condensed">
+                 <tr>
+                     <th>Title</th>
+                     <th>Author</th>
+                     <th>Date</th>
+                     <th>Link</th>
+                 </tr>
+                 <% data.posts.forEach(function (docs) { %>
+                     <tr>
+                         <td class="warning"><%= docs.title %></td>
+                         <td class="warning"><%= docs.author.firstname + " " + docs.author.lastname %></td>
+                         <td class="warning"><%= docs.date.toLocaleDateString('en-GB') %></td>
+                         <td class="warning"><a href="/posts/<%= docs.id %>">More</a></td>
+                     </tr>
+                 <% }) %>
+             </table>
+             <div class="box-footer text-center">
+                 <nav aria-label="Page navigation">
+                     <% if (pageCount > 1) { %>
+                     <ul class="pagination">
+                         <% if (currentPage > 1) { %>
+                         <li><a href="/posts_v2?page=1">&laquo;</a></li>
+                         <% } %>
+                         <% var i = 1;
+                             if (currentPage > 5) {
+                                 i =+ currentPage - 4;
+                             } %>
+                         <% if (i !== 1) { %>
+                         <li class="disabled"><a href="#">...</a></li>
+                         <% } %>
+                         <% for (i; i <= pageCount; i++) { %>
+                         <% if (currentPage == i) { %>
+                         <li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
+                         <% } else { %>
+                         <li><a href="/posts_v2?page=<%= i %>"><%= i %></a></li>
+                         <% } %>
+                         <% if (i == ( + currentPage + 4)) { %>
+                         <li class="disabled"><a href="#">...</a></li>
+                         <% break; } %>
+                         <% } %>
+                         <% if (currentPage == pageCount) { %>
+                         <li><a href="/posts_v2?page=<%= currentPage %>">&raquo;</a></li>
+                         <% } %>
+                     </ul>
+                 </nav>
+                 <% } %>
+             </div>
+         </div>
+    </div>
+</div>
+
+
+<% include ./partials/footer.ejs %>

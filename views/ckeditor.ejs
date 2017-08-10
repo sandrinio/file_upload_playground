@@ -1,0 +1,30 @@
+<% include ./partials/header.ejs %>
+
+<div class="well">
+    <h1 class="text-center">CK editor with ajax file upload</h1>
+</div>
+
+<div class="container">
+
+    <div style="margin-top: 40px">
+        <form action="/save_post" method="POST" id="content_post">
+            <div class="form-group">
+                <label for="exTitle">Enter Title</label>
+                <span id="message-from-ajax"></span>
+                <input type="text" class="form-control" id="exTitle" placeholder="Title" name="content[title]">
+            </div>
+            <textarea name="content[editor]" id="editor1" rows="10" cols="80"></textarea>
+            <button class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+        </form>
+        <script>
+           CKEDITOR.replace( 'editor1', {
+
+           });
+        </script>
+    </div>
+
+</div>
+
+
+
+<% include ./partials/footer.ejs %>
