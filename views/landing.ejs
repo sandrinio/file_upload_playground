@@ -6,6 +6,9 @@
 
 
         <div class="container">
+            <div id="app">
+                <h1>{{ message }} </h1>
+            </div>
             <div class="well">
                 <form action="/basic_upload" style="margin-left: 0; display: inline-block;" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
@@ -33,6 +36,60 @@
                 <div id="targetLayer"></div>
 
             </div>
+
+            <div class="well">
+                <form action="/test-form" method="POST">
+                    <input type="text" name="proposal[1]">
+                    <input type="text" name="proposal[2]">
+                    <button class="btn btn-default">submit</button>
+                </form>
+            </div>
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="form-container">
+                            <form action="/addTeamMember" method="POST" id="teamMemberForm">
+
+                            </form>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Department</th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                        <div id="form-container">
+                            <form method="POST" id="teamMemberForm">
+                                <input type="text" name="username">
+                                <input type="text" name="mail">
+                                <input type="text" name="description">
+                                <div class="row" id="memberRow">
+                                    <div class="col-md-4">
+                                        <input class="form-control teamDep" name="member[department]" type="text">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control teamMemb" name="member[name]" type="text">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control teamRole" name="member[role]" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                            <button id="subm" class="btn btn-danger btn-xs">submit</button>
+                            <button class="btn btn-warning btn-xs" id="addMore">Add More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
 

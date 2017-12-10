@@ -16,9 +16,7 @@ router.get('/posts', function (req, res) {
 });
 
 router.get('/posts_v2', function (req, res) {
-   function sd() {
-      SeedData.seedData();
-   }
+
    Posts.find({}).sort('-date').lean().exec(function (err, data) {
       if (err) {
          return console.log(err);

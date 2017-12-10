@@ -14,14 +14,10 @@ router.get('/posts', (req, res) =>{
       }
       res.render('posts', { data: data })
    })
-
 });
 
 
 router.get('/posts_v2', (req, res) =>{
-   function sd() {
-      SeedData.seedData();
-   }
 Posts.find({}).sort('-date').lean().exec(function (err, data) {
    if(err){
      return console.log(err)

@@ -18,6 +18,10 @@ router.get('/', (req, res) => {
    res.render('landing', { photo: "" })
 });
 
+router.get('/testing-route', (req, res) => {
+   res.send('reached')
+});
+
 
 router.post('/basic_upload', upload.single('basicFile'), (req, res) => {
    res.render('landing', { photo: req.file, active_page: 'file_upload' })
@@ -28,7 +32,16 @@ router.post('/ajax_upload', upload.single('ajaxFile'), (req, res) => {
    res.status(200).json(data)
 });
 
+router.post('/test-form', function (req, res) {
+   res.send(req.body.proposal)
+});
 
+router.post('/addTeamMember', (req, res) => {
+   let obj = [];
+   req.body.member.department.forEach(function (dep) {
+      console.log(dep)
+   });
+});
 
 
 module.exports = router;
